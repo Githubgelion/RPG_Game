@@ -20,11 +20,11 @@ namespace Engine.ViewModels
             set
             {
                 _curruentLocation = value;
-                OnPropertyChanged("CurrentLocation");
-                OnPropertyChanged("HasLocationToNorth");
-                OnPropertyChanged("HasLocationToEast");
-                OnPropertyChanged("HasLocationToWest");
-                OnPropertyChanged("HasLocationToSouth");
+                OnPropertyChanged(nameof(CurrentLocation));
+                OnPropertyChanged(nameof(HasLocationToNorth));
+                OnPropertyChanged(nameof(HasLocationToEast));
+                OnPropertyChanged(nameof(HasLocationToWest));
+                OnPropertyChanged(nameof(HasLocationToSouth));
             }
         }
 
@@ -50,6 +50,8 @@ namespace Engine.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        //move player button 
+
         public void MoveNorth()
         {
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante, CurrentLocation.yCoordinate + 1);
@@ -70,7 +72,7 @@ namespace Engine.ViewModels
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante - 1, CurrentLocation.yCoordinate);
         }
 
-
+        //hidden button 
         public bool HasLocationToNorth
         {
             get

@@ -11,9 +11,6 @@ namespace Engine.Models
         public int _expierncePointsForKilling;
         public int _heatPoint;
 
-
-
-
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

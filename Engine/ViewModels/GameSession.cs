@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace Engine.ViewModels
 {
-    public class GameSession : INotifyPropertyChanged
+    public class GameSession : BaseNotificationClass
     {
 
         private Location _curruentLocation;
@@ -43,33 +43,39 @@ namespace Engine.ViewModels
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         //move player button 
 
         public void MoveNorth()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante, CurrentLocation.yCoordinate + 1);
+            if (HasLocationToNorth)
+            {
+                CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante, CurrentLocation.yCoordinate + 1);
+            }
         }
 
         public void MoveEast()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante + 1, CurrentLocation.yCoordinate);
+            if (HasLocationToEast)
+            {
+                CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante + 1, CurrentLocation.yCoordinate);
+            }
         }
 
         public void MoveSouth()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante, CurrentLocation.yCoordinate - 1);
+            if (HasLocationToSouth)
+            {
+                CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante, CurrentLocation.yCoordinate - 1);
+            }
         }
 
         public void MoveWest()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante - 1, CurrentLocation.yCoordinate);
+            if (HasLocationToWest)
+            {
+                CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.xCoordiante - 1, CurrentLocation.yCoordinate);
+            }
         }
 
         //hidden button 
